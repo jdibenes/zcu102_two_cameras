@@ -1,6 +1,8 @@
 # zcu102_2cam
 
-Setup Vivado 2017.4
+ZCU102 two camera setup 
+
+Vivado 2017.4
 
 Board: zcu102
 
