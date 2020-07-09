@@ -1,6 +1,6 @@
 # zcu102_2cam
 
-ZCU102 two camera setup 
+zcu102 two camera setup 
 
 Vivado 2017.4
 
