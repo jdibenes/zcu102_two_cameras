@@ -1,6 +1,8 @@
 # zcu102_2cam
 
 zcu102 two camera setup 
+Main application captures an image from both cameras when one the 5 push buttons is pressed and stored the two images in the SD Card.
+
 
 Vivado 2017.4
 
