@@ -1,35 +1,6 @@
 ###################
 # Pin Constraints #
 ###################
-
-#
-# VGA
-#
-
-set_property PACKAGE_PIN A20 [get_ports vga_g[0]]
-set_property PACKAGE_PIN B20 [get_ports vga_g[1]]
-set_property PACKAGE_PIN A22 [get_ports vga_g[2]]
-set_property PACKAGE_PIN A21 [get_ports vga_g[3]]
-
-set_property PACKAGE_PIN B21 [get_ports vga_r[0]]
-set_property PACKAGE_PIN C21 [get_ports vga_r[1]]
-set_property PACKAGE_PIN C22 [get_ports vga_r[2]]
-set_property PACKAGE_PIN D21 [get_ports vga_r[3]]
-
-set_property PACKAGE_PIN D20 [get_ports vga_b[0]]
-set_property PACKAGE_PIN E20 [get_ports vga_b[1]]
-set_property PACKAGE_PIN D22 [get_ports vga_b[2]]
-set_property PACKAGE_PIN E22 [get_ports vga_b[3]]
-
-set_property PACKAGE_PIN F20 [get_ports vga_h]
-set_property PACKAGE_PIN G20 [get_ports vga_v]
-
-set_property IOSTANDARD LVCMOS33 [get_ports vga_b]
-set_property IOSTANDARD LVCMOS33 [get_ports vga_g]
-set_property IOSTANDARD LVCMOS33 [get_ports vga_r]
-set_property IOSTANDARD LVCMOS33 [get_ports vga_h]
-set_property IOSTANDARD LVCMOS33 [get_ports vga_v]
-
 #
 # MIPI CSI-2 - I2C IMX274 Sensor
 #
@@ -90,11 +61,8 @@ set_property IOSTANDARD LVCMOS12 [get_ports sensor1_gpio_*]
 
 # There is no defined phase relationship, hence they are treated as asynchronous
 set_clock_groups -asynchronous -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT0]] \
-                               -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT1]] \
-                               -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT2]] \
                                -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT3]] \
-                               -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT4]] \
-                               -group [get_clocks -of [get_pins */vid_phy_controller_0/inst/gt_usrclk_source_inst/tx_mmcm.txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT2]]
+                               -group [get_clocks -of [get_pins */clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT4]]
                                
 # compress bitstream
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
