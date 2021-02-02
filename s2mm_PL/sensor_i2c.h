@@ -12,6 +12,7 @@
 #include "xiic.h"
 
 #define IIC_CMD_FIFO_DEPTH 16
+#define IMX274_IIC_ADDR 0x1A
 
 typedef struct {
 	XIic iic;

@@ -13,9 +13,9 @@
 #include "sleep.h"
 #include "frmbufwr.h"
 
-u32 g_lock     = 0;
-u32 g_target_0 = 0;
-u32 g_target_1 = 1;
+static u32 g_lock     = 0;
+static u32 g_target_0 = 0;
+static u32 g_target_1 = 0;
 
 static void frmbufwr_irq_handler(void *data) {
 	XV_FrmbufWr_l2 *inst;
@@ -51,7 +51,7 @@ int frmbufwr_init(XV_FrmbufWr_l2 *p_frmbufwr, u16 dev_id, XIntc *p_intc, u8 vec_
 	return 0;
 }
 
-int frmbufwr_setup(XV_FrmbufWr_l2 *p_frmbufwr, u32 width, u32 height, u32 frame_rate, UINTPTR dest_addr) {
+int frmbufwr_setup(XV_FrmbufWr_l2 *p_frmbufwr, u32 width, u32 height, u32 frame_rate) {
 	XVidC_VideoStream stream_in;
 	XVidC_VideoMode video_mode;
 	XVidC_VideoTiming const *p_timing;
@@ -78,7 +78,7 @@ int frmbufwr_setup(XV_FrmbufWr_l2 *p_frmbufwr, u32 width, u32 height, u32 frame_
 	status = XVFrmbufWr_SetMemFormat(p_frmbufwr, stride, mem_fmt, &stream_in);
 	if (status != XST_SUCCESS) { return -3; }
 
-	status = XVFrmbufWr_SetBufferAddr(p_frmbufwr, dest_addr);
+	status = XVFrmbufWr_SetBufferAddr(p_frmbufwr, frmbufwr_getaddr(p_frmbufwr));
 	if (status != XST_SUCCESS) { return -4; }
 
 	return 0;
@@ -99,4 +99,23 @@ void dual_frmbufwr_reset(XGpioPs *p_emio) {
 	usleep(EMIO_RESET_DELAY_US);
 	emio_set_frmbufwr_reset(p_emio, 1);
 	usleep(EMIO_RESET_DELAY_US);
+}
+
+void frmbufwr_lock() {
+	g_lock = 1;
+}
+
+void frmbufwr_release() {
+	g_lock = 0;
+}
+
+u32 frmbufwr_getaddr(XV_FrmbufWr_l2 *p_frmbufwr) {
+	u32 addr = 0;
+
+	switch (p_frmbufwr->FrmbufWr.Config.DeviceId) {
+	case 0: addr = g_target_0 ? DMA0_DST_ADDR_1 : DMA0_DST_ADDR_0; break;
+	case 1: addr = g_target_1 ? DMA1_DST_ADDR_1 : DMA1_DST_ADDR_0; break;
+	}
+
+	return addr;
 }
