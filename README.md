@@ -57,13 +57,13 @@ v src
 
 11. Right click on the application project and select Clean Project.
 
-12. Connect the zcu102 board to the PC, insert the SD card on the board, and turn it on. In the SDK terminal tab, click on the green plus button and select the usb port corresponding to the board (usually USB0).
+12. Connect the zcu102 board to the PC, insert the SD card on the board, and turn it on. In the SDK Terminal tab, click on the green plus button and select the usb port corresponding to the board (usually USB0).
 
 13. Program the FPGA (Xilinx->Program FPGA).
 
 14. Run the application. Open helloworld.c and click anywhere on the file. Select Run->Run As->Launch on Hardware (System Debugger).
 
-15. Wait until the message "Ready to capture!" is shown in the SDK terminal.
+15. Wait until the message "Ready to capture!" is shown in the SDK Terminal.
 
 16. Press any of the push buttons SW14, SW15, SW16, SW17, or SW18 to capture images from both cameras. The images will be stored on the SD card.
 

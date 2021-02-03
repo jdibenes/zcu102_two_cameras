@@ -113,8 +113,8 @@ u32 frmbufwr_getaddr(XV_FrmbufWr_l2 *p_frmbufwr) {
 	u32 addr = 0;
 
 	switch (p_frmbufwr->FrmbufWr.Config.DeviceId) {
-	case 0: addr = g_target_0 ? DMA0_DST_ADDR_1 : DMA0_DST_ADDR_0; break;
-	case 1: addr = g_target_1 ? DMA1_DST_ADDR_1 : DMA1_DST_ADDR_0; break;
+	case 0: addr = g_target_0 ? DMA0_DST_ADDR_0 : DMA0_DST_ADDR_1; break;
+	case 1: addr = g_target_1 ? DMA1_DST_ADDR_0 : DMA1_DST_ADDR_1; break;
 	}
 
 	return addr;
