@@ -16,30 +16,41 @@ row 2159: Y0 U0 Y1 V1 Y2 U2 Y3 V3 ... Y3839 V3839
 
 ### Vivado
 
-1. Open Vivado and create a new project (File->New Project).
+1. Open Vivado and create a new project (File->New Project). Select RTL Project and set Do not specify sources at this time. Select Boards and then select Zynq UltraScale+ ZCU102 Evaluation Board.
 
-2. Select RTL Project and set Do not specify sources at this time.
+2. After creating the project, run bd_zcu102_2cam.tcl (Tools->Run Tcl Script...).
 
-3. Select Boards and then select Zynq UltraScale+ ZCU102 Evaluation Board.
+3. Add the constraints file zcu102_ds.xdc (Add Sources->Add or create constraints->Add Files).
 
-4. After creating the project, run bd_zcu102_2cam.tcl (Tools->Run Tcl Script...).
+4. Create the HDL wrapper. Right click on the block diagram (design_1) in the sources window and select Create HDL Wrapper. Let Vivado manage wrapper and auto-update.
 
-5. Add the constraints file zcu102_ds.xdc (Add Sources->Add or create constraints->Add Files).
+5. Generate Bitstream (this will take a while).
 
-6. Create the HDL wrapper. Right click on the block diagram (design_1) in the sources window and select Create HDL Wrapper. Let Vivado manage wrapper and auto-update.
+6. Export hardware, including bitstream (File->Export->Export Hardware...).
 
-7. Generate Bitstream.
-
-8. Export hardware, including bitstream (File->Export->Export Hardware...).
-
-9. Launch SDK (File->Launch SDK).
+7. Launch SDK (File->Launch SDK).
 
 ### Xilinx SDK
 
-10. Create BSP (File->New->Board Support Package) and enable xilffs.
+8. Create BSP (File->New->Board Support Package) and enable xilffs.
 
-11. Create application project (File->New->Application Project) and Use existing BSP (from step 10). Select the Hello World template.
+9. Create application project (File->New->Application Project) and Use existing BSP (from step 10). Select the Hello World template.
 
+10. Right click on the src folder in the application project. Select Import. Select General->File System. Import from the directory containing helloworld.c. Select capture.c, capture.h, helloworld.c, imx274.c, imx274.h and the s2mm_PL folder. Your application project should look like this:
 
-11. Import all the files in s2mm_PL (import from filesystem), helloworld.c, imx274.c and imx274.h
-
+```
+> Binaries
+> Includes
+> Debug
+v src
+    > s2mm_PL
+    > capture.c
+    > capture.h
+    > helloworld.c
+    > imx274.c
+    > imx274.h
+    > platform_config.h
+    > platform.c
+    > platform.h
+      lscript.ld
+```
