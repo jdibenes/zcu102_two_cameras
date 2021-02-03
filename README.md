@@ -34,7 +34,7 @@ row 2159: Y0 U0 Y1 V1 Y2 U2 Y3 V3 ... Y3839 V3839
 
 8. Create BSP (File->New->Board Support Package) and enable xilffs.
 
-9. Create application project (File->New->Application Project) and Use existing BSP (from step 10). Select the Hello World template.
+9. Create application project (File->New->Application Project) and Use existing BSP (from step 8). Select the Hello World template.
 
 10. Right click on the src folder in the application project. Select Import. Select General->File System. Import from the directory containing helloworld.c. Select capture.c, capture.h, helloworld.c, imx274.c, imx274.h and the s2mm_PL folder. Your application project should look like this:
 
@@ -54,3 +54,16 @@ v src
     > platform.h
       lscript.ld
 ```
+
+11. Right click on the application project and select Clean Project.
+
+12. Connect the zcu102 board to the PC, insert the SD card on the board, and turn it on. In the SDK terminal tab, click on the green plus button and select the usb port corresponding to the board (usually USB0).
+
+13. Program the FPGA (Xilinx->Program FPGA).
+
+14. Run the application. Open helloworld.c and click anywhere on the file. Select Run->Run As->Launch on Hardware (System Debugger).
+
+15. Wait until the message "Ready to capture!" is shown in the SDK terminal.
+
+16. Press any of the push buttons SW14, SW15, SW16, SW17, or SW18 to capture images from both cameras. The images will be stored on the SD card.
+
