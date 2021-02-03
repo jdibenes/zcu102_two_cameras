@@ -14,6 +14,8 @@ row 2159: Y0 U0 Y1 V1 Y2 U2 Y3 V3 ... Y3839 V3839
 
 ## Instructions
 
+### Vivado
+
 1. Open Vivado and create a new project (File->New Project).
 
 2. Select RTL Project and set Do not specify sources at this time.
@@ -26,17 +28,18 @@ row 2159: Y0 U0 Y1 V1 Y2 U2 Y3 V3 ... Y3839 V3839
 
 6. Create the HDL wrapper. Right click on the block diagram (design_1) in the sources window and select Create HDL Wrapper. Let Vivado manage wrapper and auto-update.
 
-7. Generate Bitstream
+7. Generate Bitstream.
 
+8. Export hardware, including bitstream (File->Export->Export Hardware...).
 
+9. Launch SDK (File->Launch SDK).
 
-7. Export hardware, including bitstream (File->Export->Export Hardware...)
+### Xilinx SDK
 
-8. Launch SDK (File->Launch SDK)
+10. Create BSP (File->New->Board Support Package) and enable xilffs.
 
-9. Create BSP and enable xilffs
+11. Create application project (File->New->Application Project) and Use existing BSP (from step 10). Select the Hello World template.
 
-10. Create application project (hello world template and use BSP from step 9)
 
 11. Import all the files in s2mm_PL (import from filesystem), helloworld.c, imx274.c and imx274.h
 
