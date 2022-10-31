@@ -2,6 +2,8 @@
 
 This is a standalone design for using two IMX274 (LI-IMX274MIPI-FMC) cameras with the ZCU102 Evaluation Board. The main application (helloworld.c) captures an image from both cameras when one of the 5 push buttons (SW14 to SW18) is pressed and stores the two images on the SD Card. Image format is 3840x2160 (4K), 16 bits per pixel YUV 4:2:2 (Packed YUYV), YUV are 8 bits each. The block diagram tcl script (bd_zcu102_2cam.tcl) is for Vivado 2017.4.
 
+2022 UPDATE: Install the patch first: https://support.xilinx.com/s/article/76960?language=en_US.
+
 ## Image Format
 
 ```
